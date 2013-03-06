@@ -8,7 +8,7 @@ recipe            "glance::api", "Installs packages required for a glance api se
 recipe            "glance::registry", "Installs packages required for a glance registry server"
 recipe            "glance::db", "Creates the Glance registry database"
 
-%w{ ubuntu fedora redhat centos }.each do |os|
+%w{ ubuntu fedora redhat centos suse }.each do |os|
   supports os
 end
 
