@@ -151,7 +151,9 @@ template "/etc/glance/glance-registry.conf" do
   variables(
     :registry_bind_address => bind_address,
     :registry_port => registry_endpoint.port,
-    :sql_connection => sql_connection
+    :sql_connection => sql_connection,
+    "identity_endpoint" => identity_admin_endpoint,
+    "service_pass" => service_pass
   )
 
   notifies :restart, "service[glance-registry]", :immediately
@@ -165,10 +167,6 @@ template "/etc/glance/glance-registry-paste.ini" do
   owner  "root"
   group  "root"
   mode   00644
-  variables(
-    "identity_endpoint" => identity_admin_endpoint,
-    "service_pass" => service_pass
-  )
 
   notifies :restart, "service[glance-registry]", :immediately
 end
